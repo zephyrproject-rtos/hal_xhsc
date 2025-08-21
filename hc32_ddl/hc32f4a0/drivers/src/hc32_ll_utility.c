@@ -9,6 +9,7 @@
    2022-06-30       CDT             Support re-target printf for IAR EW version 9 or later
    2023-06-30       CDT             Modify register USART DR to USART TDR
                                     Prohibit DDL_DelayMS and DDL_DelayUS functions from being optimized
+   2025-08-21       CDT             Convert _write() to weak
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2022-2023, Xiaohua Semiconductor Co., Ltd. All rights reserved.
@@ -339,7 +340,7 @@ size_t __dwrite(int handle, const unsigned char *buffer, size_t size)
  * @param  [in] size
  * @retval int32_t
  */
-int32_t _write(int fd, char data[], int32_t size)
+__WEAKDEF int32_t _write(int fd, char data[], int32_t size)
 {
     int32_t i = -1;
 
