@@ -9,6 +9,7 @@
    2022-06-30       CDT             Support re-target printf for IAR EW version 9 or later
    2023-06-30       CDT             Modify register USART DR to USART TDR
                                     Prohibit DDL_DelayMS and DDL_DelayUS functions from being optimized
+   2025-08-21       CDT             Convert _write() to weak
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2022-2023, Xiaohua Semiconductor Co., Ltd. All rights reserved.
@@ -367,7 +368,7 @@ int32_t _write(int fd, char data[], int32_t size)
  *           - LL_ERR:                  The callback function pfnPreinit occurs error.
  *           - LL_ERR_INVD_PARAM:       The pointer pfnPreinit is NULL.
  */
-int32_t LL_PrintfInit(void *vpDevice, uint32_t u32Param, int32_t (*pfnPreinit)(void *vpDevice, uint32_t u32Param))
+__WEAKDEF int32_t LL_PrintfInit(void *vpDevice, uint32_t u32Param, int32_t (*pfnPreinit)(void *vpDevice, uint32_t u32Param))
 {
     int32_t i32Ret = LL_ERR_INVD_PARAM;
 
